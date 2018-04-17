@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/"
+    android:background="@drawable/login_bg"
     android:orientation="vertical">
     <include layout="@layout/main_title_bar"/>
     <ImageView
@@ -20,8 +20,8 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/"
-        android:drawableLeft="@drawable/"
+        android:background="@drawable/login_user_name_bg"
+        android:drawableLeft="@drawable/user_name_icon"
         android:drawablePadding="10dp"
         android:paddingLeft="8dp"
         android:gravity="center_vertical"
@@ -37,8 +37,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:background="@drawable/"
-        android:drawableLeft="@drawable/"
+        android:background="@drawable/login_psw_bg"
+        android:drawableLeft="@drawable/psw_icon"
         android:drawablePadding="10dp"
         android:paddingLeft="8dp"
         android:hint="请输入密码"
@@ -55,7 +55,7 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/"
+        android:background="@drawable/register_selector"
         android:text="登录"
         android:textColor="@android:color/white"
         android:textSize="18sp"/>

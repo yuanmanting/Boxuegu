@@ -1,6 +1,7 @@
 package cn.edu.gdmec.android.boxuegu;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -72,12 +73,47 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }else if (md5Psw.equals(spPsw)){
                     Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+                    saveLoginStatue(true,userName);
+                    Intent data=new Intent();
+                    data.putExtra("islogin",true);
+                    setResult(RESULT_OK,data);
+                    LoginActivity.this.finish();
                     return;
 
-                }else  if (TextUtils.isEmpty(psw)){
-
+                }else  if (TextUtils.isEmpty(spPsw)&& !md5Psw.equals((spPsw))){
+                Toast.makeText(LoginActivity.this,"输入的用户名和密码不一致",Toast.LENGTH_SHORT).show();
+                return;
+                }else {
+                    Toast.makeText(LoginActivity.this,"此用户名不存在",Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
+    }
+
+
+
+    private String readPsw(String userName) {
+        SharedPreferences sp=getSharedPreferences("loginInfo",MODE_PRIVATE);
+        return sp.getString(userName,"");
+    }
+    private void saveLoginStatue(boolean status, String userName) {
+        SharedPreferences sp=getSharedPreferences("longinInfo",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
+        editor.putBoolean("isLogin",status);
+        editor.putString("loginUserName",userName);
+        editor.commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data !=null){
+            String userName=data.getStringExtra("userName");
+            if (!TextUtils.isEmpty(userName)){
+                et_user_name.setText(userName);
+                et_user_name.setSelection(userName.length());
+            }
+        }
     }
 }

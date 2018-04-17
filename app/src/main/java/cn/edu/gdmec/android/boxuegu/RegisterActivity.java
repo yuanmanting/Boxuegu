@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sun.corba.se.impl.oa.toa.TOA;
+//import com.sun.corba.se.impl.oa.toa.TOA;
 
 import cn.edu.gdmec.android.boxuegu.utils.MD5Utils;
 
